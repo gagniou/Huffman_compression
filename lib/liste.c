@@ -20,6 +20,7 @@ void l_free_node(node* n)
     if (n!=NULL) free(n);
     return;
 }
+
 void l_free_list(node* n)
 {
     n=l_head(n); //on remonte au sommet de la liste
@@ -136,7 +137,6 @@ node* l_insert(node** p, node* body)
     }   
     return body;
 }
-
 
 node* l_remove(node* n)
 {

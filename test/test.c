@@ -1,4 +1,5 @@
 #include "liste.h"
+#include "arbre.h"
 
 #include <signal.h>
 #include <stddef.h>
@@ -289,6 +290,45 @@ int main()
         TEST(l_remove(l_remove(tete)) == NULL);
     }
 
+    printf("\n fin des tests module liste\n");
+    {
+        //début des tests de la librairie arbre
+
+        // Tests de la fonction creer_arbre_vide.
+        {
+            arbre a;
+            a=creer_arbre_vide();
+            TEST(a==NULL);
+            TEST(creer_arbre_vide()==NULL);
+        }
+        // Test de la fonction est _arbre_vide
+        {
+            arbre a;
+            a=creer_arbre_vide();
+            arbre b;
+            b=creer_arbre('a',NULL,NULL);
+            TEST(est_arbre_vide(a)==1);
+            TEST(est_arbre_vide(b)==0);
+        }
+        // TEST de lafonction creer_feuille
+        {
+            TEST(creer_feuille('a')!=NULL);
+            arbre a;
+            a=creer_feuille('a');
+            TEST(fils_droit(a)==NULL);
+            TEST(fils_gauche(a)==NULL);
+        }
+        // TEST de la fonction Creer_arbre
+        {
+            arbre a;
+            a=creer_arbre('a',NULL,NULL);
+            TEST(est_arbre_vide(a)==0);
+            TEST(est_feuille(a)==1)
+            TEST(fils_droit(a)==NULL);
+            TEST(fils_gauche(a)==NULL);
+        }
+
+    }
 
     printf("%d/%d\n", tests_reussis, tests_executes);
 

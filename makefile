@@ -27,11 +27,17 @@ build/liste.o: lib/liste.c | build
 build/libliste.a: build/liste.o | build
 	ar crs build/libliste.a build/liste.o
 
+build/arbre.o: lib/arbre.c | build
+	$(cc) -Wall -pedantic -g -c lib/arbre.c -I ./lib -o build/arbre.o
+
+build/libarbre.a: build/arbre.o | build
+	ar crs build/libarbre.a build/arbre.o
+
 build/test.o: test/test.c | build
 	$(cc) -Wall -pedantic -g -c test/test.c -I ./lib -o build/test.o
 
-build/test: build/test.o build/libliste.a | build
-	$(cc) build/test.o -Lbuild -lliste -o build/test
+build/test: build/test.o build/libliste.a build/libarbre.a | build
+	$(cc) build/test.o -Lbuild -lliste -larbre -o build/test
 
 test: build/test
 

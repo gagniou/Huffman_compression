@@ -46,4 +46,3 @@ Elt racine(arbre a) ;
 void print_arbre_rec(arbre a) ;
 void print_arbre(arbre a) ; 																		//Pour la notation préfixée
 
-#endif
